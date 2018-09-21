@@ -116,7 +116,7 @@
             this.topicId = this.$route.params.id;
 
             // 加载主题数据
-            $.get('https://cnodejs.org/api/v1/topic/' + this.topicId, (d) => {
+            $.get(utils.BE_URL + '/topic/' + this.topicId, (d) => {
                 if (d && d.data) {
                     this.topic = d.data;
                 } else {
@@ -159,7 +159,7 @@
                 } else {
                     $.ajax({
                         type: 'POST',
-                        url: 'https://cnodejs.org/api/v1/reply/' + item.id + '/ups',
+                        url: utils.BE_URL + '/reply/' + item.id + '/ups',
                         data: {
                             accesstoken: this.userInfo.token
                         },

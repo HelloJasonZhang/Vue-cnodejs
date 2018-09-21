@@ -57,7 +57,7 @@
                     }
                     $.ajax({
                         type: 'POST',
-                        url: `https://cnodejs.org/api/v1/topic/${this.topicId}/replies`,
+                        url: utils.BE_URL + `/topic/${this.topicId}/replies`,
                         data: postData,
                         dataType: 'json',
                         success: (res) => {

@@ -67,7 +67,7 @@
             })
         },
         mounted() {
-            $.get('https://cnodejs.org/api/v1/messages?accesstoken=' + this.userInfo.token, (d) => {
+            $.get(utils.BE_URL + '/messages?accesstoken=' + this.userInfo.token, (d) => {
                 if (d && d.data) {
                     this.message = d.data;
                     this.no_read_len = d.data.hasnot_read_messages.length;
@@ -92,7 +92,7 @@
             },
             // 标记所有为已读
             markall() {
-                $.post('https://cnodejs.org/api/v1/message/mark_all', {
+                $.post(utils.BE_URL + '/message/mark_all', {
                     accesstoken: this.userInfo.token
                 }, (d) => {
                     if (d && d.success) {

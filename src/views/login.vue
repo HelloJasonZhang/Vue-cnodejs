@@ -16,7 +16,7 @@
 <script>
     import $ from 'webpack-zepto';
     import nvHead from '../components/header.vue';
-
+    import utils from '../libs/utils.js';
     export default {
         data() {
             return {
@@ -31,7 +31,7 @@
                 }
                 $.ajax({
                     type: 'POST',
-                    url: 'https://cnodejs.org/api/v1/accesstoken',
+                    url: utils.BE_URL + '/accesstoken',
                     data: {
                         accesstoken: this.token
                     },

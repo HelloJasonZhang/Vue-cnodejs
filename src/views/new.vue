@@ -27,6 +27,7 @@
 
 <script>
     import $ from 'webpack-zepto';
+    import utils from '../libs/utils.js';
     import nvHead from '../components/header.vue';
     import {
         mapGetters
@@ -71,7 +72,7 @@
                 };
                 $.ajax({
                     type: 'POST',
-                    url: 'https://cnodejs.org/api/v1/topics',
+                    url: utils.BE_URL + '/topics',
                     data: postData,
                     dataType: 'json',
                     success: (res) => {

@@ -23,6 +23,8 @@ let getCheck = {
     }
 };
 
+let BE_URL = 'http://118.24.147.242:7001/api/v1';
+
 /**
  * 从文本中提取出@username 标记的用户名数组
  * @param {String} text 文本内容
@@ -198,5 +200,6 @@ exports.throttle = (fn, wait, mustRun) => {
 exports.linkUsers = linkUsers;
 exports.fetchUsers = fetchUsers;
 exports.getCheck = getCheck;
+exports.BE_URL = BE_URL;
 exports.fmtDate = fmtDate;
 exports.MillisecondToDate = MillisecondToDate;

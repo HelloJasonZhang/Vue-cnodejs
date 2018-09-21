@@ -142,7 +142,8 @@
             // 获取主题数据
             getTopics() {
                 let params = $.param(this.searchKey);
-                $.get('https://cnodejs.org/api/v1/topics?' + params, (d) => {
+                console.log(utils.BE_URL);
+                $.get(utils.BE_URL + '/topics?' + params, (d) => {
                     this.scroll = true;
                     if (d && d.data) {
                         d.data.forEach(this.mergeTopics);
