@@ -117,15 +117,15 @@
             getTitleStr(tab) {
                 let str = '';
                 switch (tab) {
-                    case 'share':
-                        str = '分享';
+                    case 'electric':
+                        str = '电力资源';
                         break;
-                    case 'ask':
-                        str = '问答';
+                    case 'pool':
+                        str = '矿池';
                         break;
-                    case 'job':
+/*                     case 'job':
                         str = '招聘';
-                        break;
+                        break; */
                     case 'good':
                         str = '精华';
                         break;

@@ -4,10 +4,10 @@
         
         <dl class="about-info">
 
-            <dt>关于项目</dt>
-            <dd>该项目是基于Cnodejs的api，采用vue.js重写的webapp。</dd>
+            <dt>发布需求</dt>
+            <dd></dd>
         
-            <dt>源码地址</dt>
+<!--             <dt>源码地址</dt>
             
             <dd>
                 <a href="https://github.com/shinygang/Vue-cnodejs">
@@ -21,7 +21,7 @@
             </dd>
             
             <dt>当前版本</dt>
-            <dd>V2.0</dd>
+            <dd>V2.0</dd> -->
 
         </dl>
     </div>

@@ -56,15 +56,15 @@ exports.getTabClassName = (tab, good, top) => {
         className = 'good';
     } else {
         switch (tab) {
-            case 'share':
-                className = 'share';
+            case 'electric':
+                className = 'electric';
                 break;
-            case 'ask':
-                className = 'ask';
+            case 'pool':
+                className = 'pool';
                 break;
-            case 'job':
+            /*             case 'job':
                 className = 'job';
-                break;
+                break; */
             default:
                 className = 'default';
                 break;

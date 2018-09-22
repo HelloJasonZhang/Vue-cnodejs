@@ -149,22 +149,22 @@ exports.getTabInfo = (tab, good, top, isClass) => {
         className = 'good';
     } else {
         switch (tab) {
-            case 'share':
-                str = '分享';
-                className = 'share';
+            case 'electric':
+                str = '电力资源';
+                className = 'electric';
                 break;
-            case 'ask':
-                str = '问答';
-                className = 'ask';
+            case 'pool':
+                str = '矿池';
+                className = 'pool';
                 break;
-            case 'job':
-                str = '招聘';
-                className = 'job';
+/*             case "job":
+                str = "招聘";
+                className = "job";
                 break;
             default:
-                str = '暂无';
-                className = 'default';
-                break;
+                str = "暂无";
+                className = "default";
+                break; */
         }
     }
     return isClass ? className : str;
