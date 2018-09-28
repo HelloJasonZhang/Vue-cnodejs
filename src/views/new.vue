@@ -4,13 +4,44 @@
             :show-menu="false"
             :fix-head="true"></nv-head>
         <div class="add-container">
-            <div class="line">选择分类：
+            <div class="line">选择版块：
                 <select class="add-tab" v-model="topic.tab">
-                    <option value="share">分享</option>
-                    <option value="ask">问答</option>
-                    <option value="job">招聘</option>
+                    <option value="electric">电力资源</option>
+                    <option value="pool">矿池</option>
                 </select>
+               
                 <a class="add-btn" @click="addTopic">发布</a>
+            </div>
+            <div class="line">
+                发布性质：
+                <select class="add-tab" v-model="topic.business">
+                    <option value="出售">出售</option>
+                    <option value="求购">求购</option>
+                </select>  
+            </div>
+            <div class="line">
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp地址：
+                <select class="add-tab" v-model="topic.city">
+                    <option value="北京">北京</option>
+                    <option value="深圳">深圳</option>
+                    <option value="成都">成都</option>
+                </select>  
+            </div>
+            <div class="line">
+                电力性质：
+                <select class="add-tab" v-model="topic.electricity">
+                    <option value="国电">国电</option>
+                    <option value="地方电">地方电</option>
+                    <option value="直供电">直供电</option>
+                </select>  
+            </div>
+            <div class="line">
+                能源性质：
+                <select class="add-tab" v-model="topic.energy">
+                    <option value="火电">火电</option>
+                    <option value="水电">水电</option>
+                    <option value="新能源">新能源</option>
+                </select>  
             </div>
             <div class="line">
                 <input class="add-title" v-model="topic.title"
@@ -37,12 +68,17 @@
         data() {
             return {
                 topic: {
-                    tab: 'share',
+                    tab: 'electric',
+                    business: '',
+                    city: '',
+                    electricity: '',
+                    energy: '',
+
                     title: '',
                     content: ''
                 },
                 err: '',
-                authorTxt: '<br/><br/><a class="from" href="https://github.com/shinygang/Vue-cnodejs">I‘m webapp-cnodejs-vue</a>'
+                authorTxt: '<br/><br/>来自移动端'
             };
         },
         computed: {
@@ -52,7 +88,6 @@
         },
         methods: {
             addTopic() {
-                console.log(this.userInfo);
                 let title = $.trim(this.topic.title);
                 let contents = $.trim(this.topic.content);
 

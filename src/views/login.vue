@@ -3,9 +3,15 @@
         <nv-head page-type="登录">
         </nv-head>
         <section class="page-body">
-            <div class="label">
+  <!--           <div class="label">
                 <input class="txt" type="text" placeholder="Access Token" v-model="token" maxlength="36">
+            </div> -->
+            <div class="label">
+                <input class="txt" type="text" placeholder="用户名" v-model="loginname" maxlength="36">
             </div>
+            <div class="label">
+                <input class="txt" type="password" placeholder="密码" v-model="pass" maxlength="36">
+            </div>                        
             <div class="label">
                 <a class="button" @click="logon">登录</a>
             </div>
@@ -20,18 +26,25 @@
     export default {
         data() {
             return {
-                token: ''
+                token: '',
+                loginname: '',
+                pass: ''
             };
         },
         methods: {
             logon() {
-                if (this.token === '') {
-                    this.$alert('令牌格式错误,应为36位UUID字符串');
+                if (this.loginname === '') {
+                    this.$alert('用户名错误,不能为空');
+                    return false;
+                }
+
+                if (this.pass === '') {
+                    this.$alert('密码错误,不能为空');
                     return false;
                 }
                 $.ajax({
                     type: 'POST',
-                    url: utils.BE_URL + '/accesstoken',
+                    url: utils.BE_URL + '/login?loginname=' + this.loginname + '&pass=' + this.pass,
                     data: {
                         accesstoken: this.token
                     },
@@ -41,7 +54,7 @@
                             loginname: res.loginname,
                             avatar_url: res.avatar_url,
                             userId: res.id,
-                            token: this.token
+                            token: res.token
                         };
                         window.window.sessionStorage.user = JSON.stringify(user);
                         this.$store.dispatch('setUserInfo', user);
