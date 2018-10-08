@@ -123,9 +123,6 @@
                     case 'pool':
                         str = '矿池';
                         break;
-/*                     case 'job':
-                        str = '招聘';
-                        break; */
                     case 'good':
                         str = '精华';
                         break;

@@ -25,7 +25,7 @@
             return {
                 hasErr: false,
                 content: '',
-                author_txt: '<br/><br/><a class="form" href="https://github.com/shinygang/Vue-cnodejs">I‘m webapp-cnodejs-vue</a>'
+                author_txt: '<br/><br/>来自移动端'
             };
         },
         computed: {

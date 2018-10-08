@@ -59,9 +59,6 @@ exports.getTabClassName = (tab, good, top) => {
             case 'pool':
                 className = 'pool';
                 break;
-            /*             case 'job':
-                className = 'job';
-                break; */
             default:
                 className = 'default';
                 break;
