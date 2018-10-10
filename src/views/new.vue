@@ -20,7 +20,7 @@
                 </select>  
             </div>
             <div class="line">
-                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp地址：
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp城市：
                 <select class="add-tab" v-model="topic.city">
                     <option value="北京">北京</option>
                     <option value="深圳">深圳</option>
@@ -48,10 +48,16 @@
                         type="text" :class="{'err':err=='title'}"
                         placeholder="标题，字数10字以上" max-length="100"/>
             </div>
-            <textarea v-model="topic.content" rows="35" class="add-content"
+ <!--            <textarea v-model="topic.content" rows="35" class="add-content"
                 :class="{'err':err=='content'}"
                 placeholder='回复支持Markdown语法,请注意标记代码'>
-            </textarea>
+            </textarea> -->
+            <quill-editor   v-model="topic.content" 
+                            rows="35" 
+                            class="add-content" 
+                            :class="{'err':err=='content'}"
+                            :options="editorOption">
+		    </quill-editor>
         </div>
     </div>
 </template>
@@ -73,12 +79,15 @@
                     city: '',
                     electricity: '',
                     energy: '',
-
                     title: '',
                     content: ''
                 },
                 err: '',
-                authorTxt: '<br/><br/>来自移动端'
+                authorTxt: '<br/>',
+                editorOption: {
+                    theme: 'snow',
+                    placeholder: '输入任何内容，支持html'
+                }
             };
         },
         computed: {
@@ -132,6 +141,7 @@
 </script>
 
 <style lang="scss">
+
     .add-container {
         margin-top: 50px;
         background-color: #fff;
@@ -169,6 +179,7 @@
         .add-content {
             margin: 15px 2%;
             width: 96%;
+            height: 10rem;
             border-color: #d4d4d4;
             color: #000;
         }

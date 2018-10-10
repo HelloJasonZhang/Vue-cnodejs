@@ -6,8 +6,11 @@ import routes from './routers';
 import Alert from './libs/alert';
 import store from './vuex/user';
 import FastClick from 'fastclick';
+import VueQuillEditor from 'vue-quill-editor';
+
 Vue.use(VueRouter);
 Vue.use(Alert);
+Vue.use(VueQuillEditor);
 
 $.ajaxSettings.crossDomain = true;
 

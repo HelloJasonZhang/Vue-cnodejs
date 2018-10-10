@@ -27,8 +27,9 @@
                     <span class="name">{{topic.visit_count}}次浏览</span>
                 </div>
             </section>
-
-            <section class='markdown-body topic-content' v-html="topic.content">
+<!--  <div class="markdown-body topic-content content ql-editor" v-html="topic.content"></div>
+ {{this.topic.content}}      -->   
+            <section class='content ql-editor' v-html="topic.content">
 
             </section>
 
@@ -59,7 +60,10 @@
                                 </span>
                             </div>
                         </section>
-                        <div class="reply_content" v-html="item.content"></div>
+ <!--                        <div class="reply_content ql-editor" v-html="item.content"></div> -->
+                        <quill-editor   class="reply_content"  v-model="item.content" 
+                            :options="editorOption">
+		                </quill-editor>
                         <nv-reply :topic.sync="topic"
                                 :topic-id="topicId"
                                 :reply-id="item.id"
@@ -100,7 +104,11 @@
                 topic: {}, // 主题
                 noData: false,
                 topicId: '',
-                curReplyId: ''
+                curReplyId: '',
+                editorOption: {
+                    theme: 'bubble',
+                    placeholder: '输入任何内容，支持html'
+                }
             };
         },
         computed: {
@@ -116,9 +124,10 @@
             this.topicId = this.$route.params.id;
 
             // 加载主题数据
-            $.get(utils.BE_URL + '/topic/' + this.topicId, (d) => {
+            $.get(utils.BE_URL + '/topic/' + this.topicId + '?mdrender=false', (d) => {
                 if (d && d.data) {
                     this.topic = d.data;
+                    this.topic.content = d.data.content;
                 } else {
                     this.noData = true;
                 }

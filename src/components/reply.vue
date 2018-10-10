@@ -1,11 +1,16 @@
 <template>
 
     <section class="reply">
-        <textarea id="content" rows="8" class="text"
+<!--         <textarea id="content" rows="8" class="text"
             :class="{'err':hasErr}"
             v-model="content"
             placeholder='回复支持Markdown语法,请注意标记代码'>
-        </textarea>
+        </textarea> -->
+        <quill-editor   id="content" rows="8" class="text"
+                        :class="{'err':hasErr}"
+                        v-model="content"
+                        :options="editorOption">
+        </quill-editor> 
         <a class="button" @click="addReply">确定</a>
     </section>
 
@@ -13,7 +18,7 @@
 <script>
     import $ from 'webpack-zepto';
     const utils = require('../libs/utils');
-    const markdown = require('markdown').markdown;
+/*     const markdown = require('markdown').markdown; */
     import {
         mapGetters
     } from 'vuex';
@@ -25,7 +30,11 @@
             return {
                 hasErr: false,
                 content: '',
-                author_txt: '<br/><br/>来自移动端'
+                author_txt: '<br/>',
+                editorOption: {
+                    theme: 'snow',
+                    placeholder: '回复......'
+                }
             };
         },
         computed: {
@@ -44,20 +53,19 @@
                     this.hasErr = true;
                 } else {
                     let time = new Date();
-                    let linkUsers = utils.linkUsers(this.content);
+                 /*   let linkUsers = utils.linkUsers(this.content);
                     let htmlText = markdown.toHTML(linkUsers) + this.author_txt;
-                    let replyContent = $('<div class="markdown-text"></div>').append(htmlText)[0].outerHTML;
+                     let replyContent = $('<div class="markdown-text"></div>').append(htmlText)[0].outerHTML; */
                     let postData = {
                         accesstoken: this.userInfo.token,
                         content: this.content + this.author_txt
                     };
-
                     if (this.replyId) {
                         postData.reply_id = this.replyId;
                     }
                     $.ajax({
                         type: 'POST',
-                        url: utils.BE_URL + `/topic/${this.topicId}/replies`,
+                        url: utils.BE_URL + `/topic/${this.topicId}/replies?mdrender=false`,
                         data: postData,
                         dataType: 'json',
                         success: (res) => {
@@ -68,7 +76,7 @@
                                         loginname: this.userInfo.loginname,
                                         avatar_url: this.userInfo.avatar_url
                                     },
-                                    content: replyContent,
+                                    content: this.content,
                                     ups: [],
                                     create_at: time
                                 });

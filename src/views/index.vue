@@ -7,7 +7,9 @@
     require('../assets/scss/CV.scss');
     require('../assets/scss/iconfont/iconfont.css');
     require('../assets/scss/github-markdown.css');
-
+    require('../assets/scss/quill.core.css');
+    require('../assets/scss/quill.snow.css');
+    require('../assets/scss/quill.bubble.css');
     export default {
         mounted() {
             setTimeout(() => {

@@ -19,6 +19,7 @@
   "dependencies": {
     "timeago.js": "^2.0.3",
     "vue": "^2.2.6",
+    "vue-quill-editor": "^3.0.6",
     "vue-router": "^2.3.0",
     "vuex": "^2.2.1"
   },
